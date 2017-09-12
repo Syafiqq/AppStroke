@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24//Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
-    buildToolsVersion "24.0.2"//project.ANDROID_BUILD_TOOLS_VERSION
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     defaultConfig {
         //applicationId "id.ac.ub.filkom.se.kcv.astech.medical.appstroke"
         minSdkVersion 16
-        targetSdkVersion 24//Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+        targetSdkVersion 26//Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
         versionCode 1
         versionName "1.0.0"
     }
