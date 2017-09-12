@@ -1,11 +1,11 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
 
     defaultConfig {
-        applicationId "id.ac.ub.filkom.se.kcv.astech.medical.appstroke"
+        //applicationId "id.ac.ub.filkom.se.kcv.astech.medical.appstroke"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
