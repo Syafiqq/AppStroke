@@ -1,41 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="id.ac.ub.filkom.sekcv.appstroke"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        package="id.ac.ub.filkom.sekcv.appstroke">
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/appstroke_app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:replace="android:label">
-        <activity
-            android:name=".controller.MainPage"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
             android:label="@string/appstroke_app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            tools:replace="android:label">
+        <activity
+                android:name=".controller.MainPage"
+                android:label="@string/appstroke_app_name"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action
-                    android:name="android.intent.action.MAIN"
-                    tools:node="remove"/>
-                <category
-                    android:name="android.intent.category.LAUNCHER"
-                    tools:node="remove"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".controller.HelpPage"
-            android:label="@string/helppage_toolbar_title"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+                android:name=".controller.HelpPage"
+                android:label="@string/helppage_toolbar_title"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".controller.AboutUsPage"
-            android:label="@string/aboutuspage_toolbar_title"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+                android:name=".controller.AboutUsPage"
+                android:label="@string/aboutuspage_toolbar_title"
+                android:screenOrientation="portrait"
+                android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
