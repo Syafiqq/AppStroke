@@ -175,7 +175,7 @@ public class MainPage extends AppCompatActivity
         final Context context;
         try
         {
-            context = super.createPackageContext("id.ac.ub.filkom.sekcv.appstroke", 0);
+            context = super.createPackageContext("id.ac.ub.filkom.se.kcv.astech.medical.appstroke", 0);
             final SharedPreferences pref  = context.getSharedPreferences("CekLogin", Context.MODE_PRIVATE);
             final String            email = pref.getString("email", null);
             if((email != null))
@@ -220,7 +220,7 @@ public class MainPage extends AppCompatActivity
         final Context context;
         try
         {
-            context = super.createPackageContext("id.ac.ub.filkom.sekcv.appstroke", 0);
+            context = super.createPackageContext("id.ac.ub.filkom.se.kcv.astech.medical.appstroke", 0);
             final SharedPreferences pref = context.getSharedPreferences("CekLogin", Context.MODE_PRIVATE);
             final String            email = pref.getString("email", null);
             if((email == null))
