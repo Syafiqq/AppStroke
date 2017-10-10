@@ -137,7 +137,7 @@ public class Chart extends TitledFragment
     {
         Log.d(Chart.CLASSNAME, Chart.TAG + ".initializeChartContainer");
 
-        this.chart = (LineChart) this.container.findViewById(R.id.mainpage_viewpager_chart_linechart);
+        this.chart = this.container.findViewById(R.id.mainpage_viewpager_chart_linechart);
 
         this.chart.getDescription().setEnabled(false);
 
