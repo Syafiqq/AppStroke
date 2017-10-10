@@ -188,12 +188,6 @@ public class Chart extends TitledFragment
                 //return new DateTime((long) value).toString("mm:ss");
                 return "";
             }
-
-            @Override
-            public int getDecimalDigits()
-            {
-                return 0;
-            }
         });
 
         YAxis leftAxis = this.chart.getAxisLeft();
