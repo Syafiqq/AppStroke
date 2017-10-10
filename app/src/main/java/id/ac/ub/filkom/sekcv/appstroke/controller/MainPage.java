@@ -170,11 +170,12 @@ public class MainPage extends AppCompatActivity
     public void setUser()
     {
         Log.d(MainPage.CLASSNAME, MainPage.TAG + ".setUser");
+        this.setDummyAccount();
 
         final Context context;
         try
         {
-            context = super.createPackageContext("id.ac.ub.filkom.se.kcv.astech.astechlauncher", 0);
+            context = super.createPackageContext("id.ac.ub.filkom.sekcv.appstroke", 0);
             final SharedPreferences pref  = context.getSharedPreferences("CekLogin", Context.MODE_PRIVATE);
             final String            email = pref.getString("email", null);
             if((email != null))
@@ -212,6 +213,31 @@ public class MainPage extends AppCompatActivity
         }
 
         this.updateActivityState();
+    }
+
+    private void setDummyAccount()
+    {
+        final Context context;
+        try
+        {
+            context = super.createPackageContext("id.ac.ub.filkom.sekcv.appstroke", 0);
+            final SharedPreferences pref = context.getSharedPreferences("CekLogin", Context.MODE_PRIVATE);
+            final String            email = pref.getString("email", null);
+            if((email == null))
+            {
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("email", "labkcvfilkom@gmail.com");
+                editor.putString("name", "labkcv");
+                editor.putString("password", "password");
+                editor.putString("date", "1990-12-30");
+                editor.commit();
+            }
+        }
+        catch(PackageManager.NameNotFoundException ignored)
+        {
+
+        }
+
     }
 
     private void setToolbar()
