@@ -1,5 +1,6 @@
 package id.ac.ub.filkom.sekcv.appstroke.controller.mainpage.viewpager;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -9,31 +10,33 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.TextView;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.MarkerView;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.ColorTemplate;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Observable;
-import java.util.Observer;
-
+import com.github.mikephil.charting.utils.MPPointF;
 import id.ac.ub.filkom.sekcv.appstroke.R;
 import id.ac.ub.filkom.sekcv.appstroke.controller.MainPage;
 import id.ac.ub.filkom.sekcv.appstroke.model.algorithm.svm.core.component.Parameter;
 import id.ac.ub.filkom.sekcv.appstroke.model.custom.android.support.v4.app.TitledFragment;
 import id.ac.ub.filkom.sekcv.appstroke.model.db.entity.Entity_MedicalRecord;
 import id.ac.ub.filkom.sekcv.appstroke.model.util.TaskDelegatable;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
+import org.joda.time.format.DateTimeFormat;
 
 /**
  * This <AppStroke> project in package <id.ac.ub.filkom.sekcv.appstroke.controller.mainpage.viewpager> created by :
@@ -47,13 +50,13 @@ public class Chart extends TitledFragment
 {
     public static final String CLASSNAME = "Chart";
     public static final String CLASSPATH = "controller.mainpage.viewpager";
-    public static final String TAG       = CLASSPATH + "." + CLASSNAME;
-    public static final int    ID        = 0b011;
+    public static final String TAG = CLASSPATH + "." + CLASSNAME;
+    public static final int ID = 0b011;
 
-    private View                        container;
-    private Observer                    medicalRecordObserver;
-    private MainPage                    root;
-    private LineChart                   chart;
+    private View container;
+    private Observer medicalRecordObserver;
+    private MainPage root;
+    private LineChart chart;
     private ArrayList<ArrayList<Entry>> chartData;
 
     @SuppressWarnings("UnnecessaryLocalVariable")
@@ -119,7 +122,10 @@ public class Chart extends TitledFragment
                     @Override
                     protected Void doInBackground(Void... params)
                     {
-                        Chart.this.setChartData();
+                        if(Chart.this.root.getMedicalRecordData().getLists().size() > 0)
+                        {
+                            Chart.this.setChartData();
+                        }
                         return null;
                     }
 
@@ -152,6 +158,12 @@ public class Chart extends TitledFragment
         this.chart.setDrawGridBackground(false);
         this.chart.setHighlightPerDragEnabled(true);
 
+        CustomMarkerView mv = new CustomMarkerView(super.getContext(), R.layout.custom_marker_view);
+
+        // set the marker to the chart
+        mv.setChartView(this.chart);
+        chart.setMarker(mv);
+
         // set an alternative background color
         this.chart.setBackgroundColor(Color.WHITE);
         this.chart.setViewPortOffsets(0f, 0f, 0f, 0f);
@@ -164,7 +176,10 @@ public class Chart extends TitledFragment
         }
 
         // add data
-        this.setChartData();
+        if(this.root.getMedicalRecordData().getLists().size() > 0)
+        {
+            this.setChartData();
+        }
         this.chart.invalidate();
 
         // get the legend (only possible after setting data)
@@ -195,7 +210,7 @@ public class Chart extends TitledFragment
         leftAxis.setTextColor(ColorTemplate.getHoloBlue());
         leftAxis.setDrawGridLines(true);
         leftAxis.setGranularityEnabled(true);
-        leftAxis.setAxisMinimum(0f);
+        leftAxis.setAxisMinimum(-200f);
         leftAxis.setAxisMaximum(1000f);
         leftAxis.setYOffset(-9f);
         leftAxis.setTextColor(ContextCompat.getColor(this.getContext(), R.color.appstroke_colorAccent));
@@ -213,10 +228,11 @@ public class Chart extends TitledFragment
 
         final LinkedList<Entity_MedicalRecord> entity = this.root.getMedicalRecordData().getLists();
 
+        int itx = -1;
         for(Iterator<Entity_MedicalRecord> i = entity.descendingIterator(); i.hasNext(); )
         {
             final Entity_MedicalRecord data = i.next();
-            float                      x    = (float) data.getTime().getMillis();
+            float x = ++itx;
             this.chartData.get(Parameter.CHOLESTEROL.ordinal() - 1).add(new Entry(x, (float) data.getCholesterol()));
             this.chartData.get(Parameter.HDL.ordinal() - 1).add(new Entry(x, (float) data.getHdl()));
             this.chartData.get(Parameter.LDL.ordinal() - 1).add(new Entry(x, (float) data.getLdl()));
@@ -228,7 +244,7 @@ public class Chart extends TitledFragment
         data.setValueTextColor(Color.WHITE);
         data.setValueTextSize(9f);
         final Parameter[] parameters = Parameter.values();
-        final Resources   resources  = super.getResources();
+        final Resources resources = super.getResources();
         final String[] chartNames = new String[]
                 {
                         resources.getString(R.string.mainpage_viewpager_medical_record_label_cholesterol),
@@ -313,6 +329,32 @@ public class Chart extends TitledFragment
             {
                 delegation.delegate();
             }
+        }
+    }
+
+    private class CustomMarkerView extends MarkerView
+    {
+        final LinkedList<Entity_MedicalRecord> entity = Chart.this.root.getMedicalRecordData().getLists();
+        private TextView tvContent;
+
+        public CustomMarkerView(Context context, int layoutResource)
+        {
+            super(context, layoutResource);
+            // this markerview only displays a textview
+            tvContent = findViewById(R.id.tvContent);
+        }
+
+        // callbacks everytime the MarkerView is redrawn, can be used to update the
+        // content (user-interface)
+        @Override
+        public void refreshContent(Entry e, Highlight highlight)
+        {
+            tvContent.setText(entity.get((int) e.getX()).getTime().toString(DateTimeFormat.forPattern("dd-MM-YYYY HH:mm:ss")) + " [" + e.getY() + "]"); // set the entry-value as the display text
+        }
+
+        @Override public MPPointF getOffset()
+        {
+            return new MPPointF(-(super.getWidth() / 2), -super.getHeight());
         }
     }
 }
