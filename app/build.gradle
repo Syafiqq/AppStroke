@@ -31,9 +31,9 @@ dependencies {
     compile 'com.github.paolorotolo:appintro:4.1.0'
     compile 'com.bignerdranch.android:simple-item-decoration:1.0.0'
     compile 'com.daimajia.swipelayout:library:1.2.0@aar'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'org.jetbrains:annotations-java5:15.0'
     compile 'net.danlew:android.joda:2.9.4.1'
     compile 'jp.wasabeef:recyclerview-animators:2.2.3'
-    compile project(":mte")
-    compile project(":chart")
 }
