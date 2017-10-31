@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.0"
 
     defaultConfig {
         applicationId "id.ac.ub.filkom.se.kcv.astech.medical.appstroke"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0.0"
     }
@@ -22,11 +22,11 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    compile 'com.android.support:design:26.0.0-alpha1'
-    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
-    compile 'com.android.support:support-v4:26.0.0-alpha1'
-    compile 'com.android.support:cardview-v7:26.0.0-alpha1'
+    compile 'com.android.support:appcompat-v7:27.0.0'
+    compile 'com.android.support:design:27.0.0'
+    compile 'com.android.support:recyclerview-v7:27.0.0'
+    compile 'com.android.support:support-v4:27.0.0'
+    compile 'com.android.support:cardview-v7:27.0.0'
     compile 'com.orhanobut:dialogplus:1.11@aar'
     compile 'com.github.paolorotolo:appintro:4.1.0'
     compile 'com.bignerdranch.android:simple-item-decoration:1.0.0'
