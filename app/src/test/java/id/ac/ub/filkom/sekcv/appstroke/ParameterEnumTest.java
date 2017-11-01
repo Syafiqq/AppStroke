@@ -2,7 +2,7 @@ package id.ac.ub.filkom.sekcv.appstroke;
 
 import org.junit.Test;
 
-import id.ac.ub.filkom.sekcv.appstroke.model.algorithm.svm.core.component.Parameter;
+import com.github.syafiqq.ptvpso.svm.stroke.algorithm.svm.core.component.Parameter;
 
 /**
  * This <AppStroke> project in package <id.ac.ub.filkom.sekcv.appstroke> created by :

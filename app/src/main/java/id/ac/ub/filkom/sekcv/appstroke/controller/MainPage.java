@@ -43,10 +43,10 @@ import id.ac.ub.filkom.sekcv.appstroke.controller.mainpage.viewpager.Home;
 import id.ac.ub.filkom.sekcv.appstroke.controller.mainpage.viewpager.MedicalRecord;
 import id.ac.ub.filkom.sekcv.appstroke.controller.mainpage.viewpager.Treatment;
 import id.ac.ub.filkom.sekcv.appstroke.model.custom.java.util.ObservableLinkedList;
-import id.ac.ub.filkom.sekcv.appstroke.model.dataset.ObservableStroke;
-import id.ac.ub.filkom.sekcv.appstroke.model.dataset.Stroke;
-import id.ac.ub.filkom.sekcv.appstroke.model.dataset.StrokeMetadata;
-import id.ac.ub.filkom.sekcv.appstroke.model.dataset.StrokeParameter;
+import com.github.syafiqq.ptvpso.svm.stroke.dataset.ObservableStroke;
+import com.github.syafiqq.ptvpso.svm.stroke.dataset.Stroke;
+import com.github.syafiqq.ptvpso.svm.stroke.dataset.StrokeMetadata;
+import com.github.syafiqq.ptvpso.svm.stroke.dataset.StrokeParameter;
 import id.ac.ub.filkom.sekcv.appstroke.model.db.entity.Entity_MedicalRecord;
 import id.ac.ub.filkom.sekcv.appstroke.model.db.entity.Entity_User;
 import id.ac.ub.filkom.sekcv.appstroke.model.db.model.Model_MedicalRecord;
@@ -163,7 +163,7 @@ public class MainPage extends AppCompatActivity
 
         if(this.medicalRecordData.getLists().size() > 0)
         {
-            this.stroke.updateStroke(Stroke.newInstanceFromMedicalRecord(this.medicalRecordData.getLists().get(0)));
+            this.stroke.updateStroke(Entity_MedicalRecord.newInstanceFromMedicalRecord(this.medicalRecordData.getLists().get(0)));
         }
     }
 

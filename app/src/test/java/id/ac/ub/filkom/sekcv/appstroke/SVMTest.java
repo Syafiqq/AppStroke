@@ -4,9 +4,9 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import id.ac.ub.filkom.sekcv.appstroke.model.algorithm.svm.core.SVM;
-import id.ac.ub.filkom.sekcv.appstroke.model.dataset.StrokeMetadata;
-import id.ac.ub.filkom.sekcv.appstroke.model.dataset.StrokeParameter;
+import com.github.syafiqq.ptvpso.svm.stroke.algorithm.svm.core.SVM;
+import com.github.syafiqq.ptvpso.svm.stroke.dataset.StrokeMetadata;
+import com.github.syafiqq.ptvpso.svm.stroke.dataset.StrokeParameter;
 
 /**
  * This <AppStroke> project in package <id.ac.ub.filkom.sekcv.appstroke> created by :

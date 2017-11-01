@@ -26,7 +26,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.MPPointF;
 import id.ac.ub.filkom.sekcv.appstroke.R;
 import id.ac.ub.filkom.sekcv.appstroke.controller.MainPage;
-import id.ac.ub.filkom.sekcv.appstroke.model.algorithm.svm.core.component.Parameter;
+import com.github.syafiqq.ptvpso.svm.stroke.algorithm.svm.core.component.Parameter;
 import id.ac.ub.filkom.sekcv.appstroke.model.custom.android.support.v4.app.TitledFragment;
 import id.ac.ub.filkom.sekcv.appstroke.model.db.entity.Entity_MedicalRecord;
 import id.ac.ub.filkom.sekcv.appstroke.model.util.TaskDelegatable;
@@ -254,7 +254,7 @@ public class Chart extends TitledFragment
                 };
         for(int i = 0, is = parameters.length; ++i < is; )
         {
-            final id.ac.ub.filkom.sekcv.appstroke.model.dataset.Parameter param = parameters[i].getParameter();
+            final com.github.syafiqq.ptvpso.svm.stroke.dataset.Parameter param = parameters[i].getParameter();
 
             LineDataSet set = new LineDataSet(this.chartData.get(i - 1), chartNames[i - 1]);
             set.setAxisDependency(YAxis.AxisDependency.LEFT);

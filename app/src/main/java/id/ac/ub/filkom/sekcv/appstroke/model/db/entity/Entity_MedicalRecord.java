@@ -2,6 +2,10 @@ package id.ac.ub.filkom.sekcv.appstroke.model.db.entity;
 
 import org.joda.time.DateTime;
 
+import com.github.syafiqq.ptvpso.svm.stroke.dataset.Stroke;
+import com.github.syafiqq.ptvpso.svm.stroke.dataset.StrokeMetadata;
+import com.github.syafiqq.ptvpso.svm.stroke.dataset.StrokeParameter;
+
 /**
  * This <AppStroke> project in package <id.ac.ub.filkom.sekcv.appstroke.model.db.entity> created by :
  * Name         : syafiq
@@ -24,6 +28,22 @@ public class Entity_MedicalRecord
     public Entity_MedicalRecord(int user, int age, double cholesterol, double hdl, double ldl, double triglyceride, int status, DateTime time)
     {
         this(-1, user, age, cholesterol, hdl, ldl, triglyceride, status, time);
+    }
+
+    public static Stroke newInstanceFromMedicalRecord(final Entity_MedicalRecord record)
+    {
+        return new Stroke(
+                new StrokeParameter(
+                        record.getAge(),
+                        record.getCholesterol(),
+                        record.getHdl(),
+                        record.getLdl(),
+                        record.getTriglyceride()
+                ),
+                new StrokeMetadata(
+                        record.getStatus()
+                )
+        );
     }
 
     public Entity_MedicalRecord(int id, int user, int age, double cholesterol, double hdl, double ldl, double triglyceride, int status, DateTime time)

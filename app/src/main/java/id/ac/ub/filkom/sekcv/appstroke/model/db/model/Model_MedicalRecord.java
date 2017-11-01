@@ -4,6 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.util.Log;
 
+import com.github.syafiqq.ptvpso.svm.stroke.dataset.StrokeMetadata;
+import com.github.syafiqq.ptvpso.svm.stroke.dataset.StrokeParameter;
+
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
@@ -12,8 +15,6 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
 
-import id.ac.ub.filkom.sekcv.appstroke.model.dataset.StrokeMetadata;
-import id.ac.ub.filkom.sekcv.appstroke.model.dataset.StrokeParameter;
 import id.ac.ub.filkom.sekcv.appstroke.model.db.core.DatabaseContract.MedicalRecord;
 import id.ac.ub.filkom.sekcv.appstroke.model.db.core.DatabaseHelper;
 import id.ac.ub.filkom.sekcv.appstroke.model.db.core.DatabaseModel;

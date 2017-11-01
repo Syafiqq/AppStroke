@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
+import com.github.syafiqq.ptvpso.svm.stroke.algorithm.svm.core.component.Status;
 
 import java.util.List;
 import java.util.Locale;
@@ -19,8 +20,6 @@ import java.util.Locale;
 import id.ac.ub.filkom.sekcv.appstroke.R;
 import id.ac.ub.filkom.sekcv.appstroke.controller.MainPage;
 import id.ac.ub.filkom.sekcv.appstroke.controller.mainpage.viewpager.Treatment;
-import id.ac.ub.filkom.sekcv.appstroke.model.algorithm.svm.core.component.Status;
-import id.ac.ub.filkom.sekcv.appstroke.model.dataset.Stroke;
 import id.ac.ub.filkom.sekcv.appstroke.model.db.entity.Entity_MedicalRecord;
 
 /**
@@ -80,7 +79,7 @@ public class RecyclerViewAdapter extends RecyclerSwipeAdapter<RecyclerViewAdapte
                 @Override
                 public boolean onLongClick(View view)
                 {
-                    RecyclerViewAdapter.this.root.updateStroke(Stroke.newInstanceFromMedicalRecord(RecyclerViewAdapter.this.dataset.get(position)));
+                    RecyclerViewAdapter.this.root.updateStroke(Entity_MedicalRecord.newInstanceFromMedicalRecord(RecyclerViewAdapter.this.dataset.get(position)));
                     RecyclerViewAdapter.this.root.getViewPager().setCurrentItem(Treatment.ID_PRO);
                     return false;
                 }
