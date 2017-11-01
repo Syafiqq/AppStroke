@@ -36,4 +36,5 @@ dependencies {
     compile 'org.jetbrains:annotations-java5:15.0'
     compile 'net.danlew:android.joda:2.9.4.1'
     compile 'jp.wasabeef:recyclerview-animators:2.2.3'
+    compile 'com.github.Syafiqq:ptvpso-svm:1.0.0'
 }
